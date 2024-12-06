@@ -1,16 +1,20 @@
 import React from 'react'
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
-
+import { useSelector } from 'react-redux';
 import DarkMode from './DarkMode';
+import Cart from '../Cart/Cart';
 const MenuLinks = [
     { id: 1, title: 'Home', link: '/#' },
     { id: 2, title: 'About', link: '/#about' },
     { id: 3, title: 'Products', link: '/#products' }
-   
+
 ];
 
 const Navbar = () => {
+    const [openCart, setOpenCart] = React.useState(false);
+    const { items } = useSelector((state) => state.cart);
+
     return (
         <div className='bg-white dark:bg-gray-900
     dark:text-white duration-200 relative z-40'>
@@ -78,19 +82,19 @@ const Navbar = () => {
 
                         </div>
                         {/* cart button section */}
-                        <button className='relative p-3'>
-                            <FaCartShopping className='text-xl text-gray-600'/>
+                        <button className='relative p-3' onClick={() => setOpenCart(true)}>
+                            <FaCartShopping className='text-xl text-gray-600' />
                             <div className='w-4-h-4 
                             bg-red-500 text-white 
                             rounded-full absolute 
                             top-0 right-0 flex items-center
-                             justify-center text-xs'> 
-                                4
+                             justify-center text-xs'>
+                                {items.length || 0}
                             </div>
                         </button>
-
+                        <Cart openCart={openCart} setOpenCart={setOpenCart} />
                         {/* Dark Mode section */}
-                        <div>
+                        <div className="relative">
                             <DarkMode />
                         </div>
                     </div>

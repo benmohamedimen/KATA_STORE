@@ -3,14 +3,10 @@ import {
     Dialog,
     DialogBackdrop,
     DialogPanel,
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
   } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-import filters from '../../Data/Filters';
-const MobileFilterDialog = ({mobileFiltersOpen, setMobileFiltersOpen, selectedColors, selectedGenders, handleFilterChange}) => {
+import FilterForm from './FilterForm';
+const MobileFilterDialog = ({mobileFiltersOpen, setMobileFiltersOpen, handleFilterChange}) => {
   return (
     <div>
           {/* Mobile filter dialog */}
@@ -38,72 +34,7 @@ const MobileFilterDialog = ({mobileFiltersOpen, setMobileFiltersOpen, selectedCo
               </div>
 
               {/* Filters */}
-              <form className="mt-4 border-t border-gray-200">
-                {filters.map((section) => (
-                  <Disclosure key={section.id} as="div" className="border-t border-gray-200 px-4 py-6">
-                    <h3 className="-mx-2 -my-3 flow-root">
-                      <DisclosureButton className="group flex w-full items-center justify-between bg-white
-                       px-2 py-3 text-gray-400 dark:text-white hover:text-gray-500 dark:bg-gray-900">
-                        <span className="font-medium text-gray-900 dark:text-white">{section.name}</span>
-                        <span className="ml-6 flex items-center">
-                          <PlusIcon aria-hidden="true" className="size-5 group-data-[open]:hidden" />
-                          <MinusIcon aria-hidden="true" className="size-5 group-[&:not([data-open])]:hidden" />
-                        </span>
-                      </DisclosureButton>
-                    </h3>
-                    <DisclosurePanel className="pt-6">
-                      <div className="space-y-6">
-                        {section.options.map((option, optionIdx) => (
-                          <div key={option.value} className="flex gap-3">
-                            <div className="flex h-5 shrink-0 items-center">
-                              <div className="group grid size-4 grid-cols-1">
-                                <input
-                                  defaultValue={option.value}
-                                  id={`filter-mobile-${section.id}-${optionIdx}`}
-                                  name={`${section.id}[]`}
-                                  type="checkbox"
-                                  checked={
-                                    selectedColors.some((color) => color === option.value) || 
-                                    selectedGenders.some((gender) => gender === option.value)
-                                  }
-                                  onChange={(e) => handleFilterChange(e, section.id)}
-                                  className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                                />
-                                <svg
-                                  fill="none"
-                                  viewBox="0 0 14 14"
-                                  className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25"
-                                >
-                                  <path
-                                    d="M3 8L6 11L11 3.5"
-                                    strokeWidth={2}
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="opacity-0 group-has-[:checked]:opacity-100"
-                                  />
-                                  <path
-                                    d="M3 7H11"
-                                    strokeWidth={2}
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="opacity-0 group-has-[:indeterminate]:opacity-100"
-                                  />
-                                </svg>
-                              </div>
-                            </div>
-                            <label
-                              htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                              className="min-w-0 flex-1 text-gray-500"
-                            >
-                              {option.label}
-                            </label>
-                          </div>
-                        ))}
-                      </div>
-                    </DisclosurePanel>
-                  </Disclosure>
-                ))}
-              </form>
+              <FilterForm isDialog={true} handleFilterChange={handleFilterChange}/>
             </DialogPanel>
           </div>
         </Dialog>
