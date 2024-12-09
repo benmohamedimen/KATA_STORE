@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -13,11 +12,7 @@ export default defineConfig({
         'redux-persist/lib/storage'
       ], // Add react-redux to external if necessary
     },
-    resolve: {
-      alias: {
-        // Ensure Rollup resolves this dependency correctly
-        'redux-persist/lib/storage': require.resolve('redux-persist/lib/storage'),
-      },
-    },
+    
+    
   },
 })
