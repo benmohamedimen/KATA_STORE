@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['react-redux'], // Add react-redux to external if necessary
+      external: ['react-redux', 'redux-persist'], // Add react-redux to external if necessary
     },
   },
 })
