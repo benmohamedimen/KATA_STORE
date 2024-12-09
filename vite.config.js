@@ -6,7 +6,18 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['react-redux', 'redux-persist', 'redux-persist/integration/react', '@reduxjs/toolkit'], // Add react-redux to external if necessary
+      external: ['react-redux', 
+      'redux-persist',
+       'redux-persist/integration/react',
+        '@reduxjs/toolkit',
+        'redux-persist/lib/storage'
+      ], // Add react-redux to external if necessary
+    },
+    resolve: {
+      alias: {
+        // Ensure Rollup resolves this dependency correctly
+        'redux-persist/lib/storage': require.resolve('redux-persist/lib/storage'),
+      },
     },
   },
 })
