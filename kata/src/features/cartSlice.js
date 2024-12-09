@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [], 
-  totalPrice: 0 // Contiendra les produits ajoutés au panier
+  totalPrice: 0 
 };
 
 const cartSlice = createSlice({
@@ -13,7 +13,6 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const product = action.payload;
 
-      // Vérifier si le produit est déjà dans le panier
       const existingProduct = state.items.find(item => item.id === product.id);
       
       if (existingProduct) {
@@ -25,20 +24,6 @@ const cartSlice = createSlice({
       }
       state.totalPrice += product.price;
     },
-    // incrementQuantity: (state, action) => {
-    //   const productId = action.payload;
-    //   const product = state.items.find(item => item.id === productId);
-    //   if (product) {
-    //     product.quantity += 1;
-    //   }
-    // },
-    // decrementQuantity: (state, action) => {
-    //   const productId = action.payload;
-    //   const product = state.items.find(item => item.id === productId);
-    //   if (product && product.quantity > 1) {
-    //     product.quantity -= 1;
-    //   }
-    // },
     removeFromCart: (state, action) => {
       const product = action.payload;
       state.items = state.items.filter(item => item.id !== product.id);

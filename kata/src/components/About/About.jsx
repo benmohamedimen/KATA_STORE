@@ -1,9 +1,9 @@
 import React from 'react';
-
+import MainContainer from '../../shared/MainContainer';
 const About = () => {
   return (
-    <section id="about" className="py-16 bg-gray-50 dark:bg-gray-800 dark:text-white">
-      <div className="container mx-auto px-4">
+   <MainContainer>
+    <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">About Us</h2>
         <div className="flex flex-col md:flex-row gap-8 items-center">
           {/* Logo KATA */}
@@ -31,7 +31,8 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
+   </MainContainer>
+  
   );
 };
 

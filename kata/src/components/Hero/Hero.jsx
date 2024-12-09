@@ -1,38 +1,9 @@
 import React from 'react'
 import Slider from 'react-slick'
-import Image1 from '../../assets/hero/headphone.png'
-import Image2 from '../../assets/category/macbook.png'
-import Image3 from '../../assets/category/gaming.png'
+import HeroData from '../../Data/HeroData'
 import Button from '../../shared/Button'
-const HeroData = [
-    {
-        id: 1,
-        img: Image1,
-        subtitle: "Beats SoLo",
-        title: "Discover the Beats Solo Experience",
-        title2: "BEATS",
-        description: "Experience the music of the future with Beats Solo, a unique and groundbreaking audio platform that combines the best of both worlds."
+import MainContainer from '../../shared/MainContainer'
 
-    },
-    {
-        id: 2,
-        img: Image2,
-        subtitle: "Macbook",
-        title: "Discover the Macbook Experience",
-        title2: "Mac",
-        description: "Experience the music of the future with Beats Solo, a unique and groundbreaking audio platform that combines the best of both worlds."
-
-    },
-    {
-        id: 3,
-        img: Image3,
-        subtitle: "XBox 3",
-        title: "Discover the Gaming Experience",
-        title2: "XBOX",
-        description: "Experience the music of the future with Beats Solo, a unique and groundbreaking audio platform that combines the best of both worlds."
-
-    }
-]
 
 const Hero = () => {
     const settings = {
@@ -47,12 +18,7 @@ const Hero = () => {
         pauseOnFocus: true
     };
     return (
-        <div className='bg-white dark:bg-gray-900
-        dark:text-white duration-200 relative z-40'>
-        <div className='container'>
-            <div className='overflow-hidden rounded-3xl min-h-[550px] 
-        sm:min-h-[650px] hero-bg-color  flex justify-center items-center'>
-                <div className='container pb-8 sm:pb-0'>
+        <MainContainer>
                     {/* hero section */}
                     <Slider {...settings}>
                         {
@@ -93,10 +59,7 @@ const Hero = () => {
                             ))
                         }
                     </Slider>
-                </div>
-            </div>
-        </div>
-        </div>
+                </MainContainer>
     )
 }
 

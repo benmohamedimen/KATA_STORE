@@ -2,9 +2,26 @@ import React from 'react'
 import {
     DisclosurePanel,
 } from '@headlessui/react'
-const Panel = ({section, handleFilterChange}) => {
+import useFilterHandler from '../../Hooks/useFilterHandler';
+import { useSelector } from 'react-redux';
+const Panel = ({section}) => {
+
+    const { handleFilterChange } = useFilterHandler();
+    const { selectedColors, selectedGenders } = useSelector((state) => state.filters);
+
+    const isOptionChecked = (option) => {
+        if (section.id === 'color') {
+          return selectedColors.includes(option.value);
+        }
+        if (section.id === 'gender') {
+          return selectedGenders.includes(option.value);
+        }
+        return false;
+      };
+console.log('section',section)
   return (
     <DisclosurePanel className="pt-6">
+
     <div className="space-y-4">
         {section.options.map((option, optionIdx) => (
             <div key={option.value} className="flex gap-3">
@@ -12,7 +29,7 @@ const Panel = ({section, handleFilterChange}) => {
                     <div className="group grid size-4 grid-cols-1">
                         <input
                             defaultValue={option.value}
-                            defaultChecked={option.checked}
+                            checked={isOptionChecked(option)}
                             id={`filter-${section.id}-${optionIdx}`}
                             name={`${section.id}[]`}
                             type="checkbox"
@@ -49,6 +66,7 @@ const Panel = ({section, handleFilterChange}) => {
                 </label>
             </div>
         ))}
+        
     </div>
 </DisclosurePanel>
 

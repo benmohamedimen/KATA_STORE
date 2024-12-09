@@ -9,7 +9,7 @@ const AddToCart = ({ product }) => {
     const handleAddToCart = () => {
       dispatch(addToCart(product));
     };
-   console.log('add to cart', items);
+  
     return (
         <button
         onClick={handleAddToCart}

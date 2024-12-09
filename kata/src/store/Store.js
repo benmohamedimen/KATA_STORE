@@ -5,6 +5,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import cartReducer from '../features/cartSlice';
 import themeReducer from '../features/themeSlice'; 
+import dialogReducer from '../features/dialogSlice';
 const persistConfig = {
     key: 'root',
     storage,
@@ -14,10 +15,19 @@ const rootReducer = combineReducers({
     theme: persistReducer(persistConfig, themeReducer),
     products: productReducer,
     filters: filterReducer,
-    cart: persistReducer(persistConfig, cartReducer), // Ajout de `persistedReducer` pour le slice `cart`
+    dialog: dialogReducer,
+    cart: persistReducer(persistConfig, cartReducer), 
   });
 const store = configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                // Ignore actions and paths from redux-persist
+                ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+                ignoredPaths: ['_persist'],
+            },
+        }),
 });
 
 const persistor = persistStore(store);

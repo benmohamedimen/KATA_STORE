@@ -16,7 +16,7 @@ const filterSlice = createSlice({
         setSelectedGenders: (state, action) => {
             state.selectedGenders = action.payload;
         },
-        clearFilters: (state) => {
+        resetFilters(state) {
             state.selectedColors = [];
             state.selectedGenders = [];
         },
@@ -24,7 +24,7 @@ const filterSlice = createSlice({
 });
 
 // Exporter les actions
-export const { setSelectedColors, setSelectedGenders, clearFilters } = filterSlice.actions;
+export const { setSelectedColors, setSelectedGenders, resetFilters } = filterSlice.actions;
 
 // Exporter le reducer
 export default filterSlice.reducer;
