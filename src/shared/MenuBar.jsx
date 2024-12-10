@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 import MenuLinks from '../Data/Menu';
 import { Link } from 'react-router-dom';
 const MenuBar = ({ variant }) => {
   // Determine styles and layout based on the variant
-  const isHorizontal = variant === "horizontal";
+  const isHorizontal = variant === 'horizontal';
   const containerClasses = isHorizontal
-    ? "hidden sm:block"
-    : "flex flex-1 items-left mt-20 justify-left sm:items-stretch sm:justify-start";
+    ? 'hidden sm:block'
+    : 'flex flex-1 items-left mt-20 justify-left sm:items-stretch sm:justify-start';
   const listClasses = isHorizontal
-    ? "flex items-center gap-4"
-    : "flex flex-col gap-4";
+    ? 'flex items-center gap-4'
+    : 'flex flex-col gap-4';
 
   return (
     <div className={containerClasses}>
@@ -29,4 +29,4 @@ const MenuBar = ({ variant }) => {
   );
 };
 
-export default MenuBar
+export default MenuBar;

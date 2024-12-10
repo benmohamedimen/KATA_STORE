@@ -8,7 +8,7 @@ const DarkMode = () => {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.theme); // Récupération du thème depuis Redux
   const element = document.documentElement;
-console.log('dsdfsdfsdfsdfsd', theme)
+  console.log('dsdfsdfsdfsdfsd', theme);
   React.useEffect(() => {
     // Appliquer les classes en fonction du thème dans Redux
     if (theme === 'dark') {
@@ -22,25 +22,23 @@ console.log('dsdfsdfsdfsdfsd', theme)
 
   return (
     <div className="relative h-6 w-12">
-  <img
-    onClick={() => dispatch(toggleTheme())}
-    src={LightButton}
-    alt="Light Mode"
-    className={`w-full h-full cursor-pointer absolute transition-opacity duration-300 ${
-      theme === "dark" ? "opacity-0" : "opacity-100"
-    }`}
-  />
-  <img
-    onClick={() => dispatch(toggleTheme())}
-    src={DarkButton}
-    alt="Dark Mode"
-    className={`w-full h-full cursor-pointer absolute transition-opacity duration-300 ${
-      theme === "dark" ? "opacity-100" : "opacity-0"
-    }`}
-  />
- 
-</div>
-
+      <img
+        onClick={() => dispatch(toggleTheme())}
+        src={LightButton}
+        alt="Light Mode"
+        className={`w-full h-full cursor-pointer absolute transition-opacity duration-300 ${
+          theme === 'dark' ? 'opacity-0' : 'opacity-100'
+        }`}
+      />
+      <img
+        onClick={() => dispatch(toggleTheme())}
+        src={DarkButton}
+        alt="Dark Mode"
+        className={`w-full h-full cursor-pointer absolute transition-opacity duration-300 ${
+          theme === 'dark' ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    </div>
   );
 };
 

@@ -1,27 +1,27 @@
-import React from 'react'
+import React from 'react';
 import ProductsCard from './ProductsCard';
 import OperationBar from './OperationBar';
 import FilterForm from './FilterForm';
 const MainList = () => {
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-2">
+      <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-2">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900"></h1>
-        <OperationBar  />
-    </div>
+        <OperationBar />
+      </div>
 
-    <section aria-labelledby="products-heading" className="pb-24 pt-6">
+      <section aria-labelledby="products-heading" className="pb-24 pt-6">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-            {/* Filters */}
-            <FilterForm isDialog={false}/>
-            {/* Product grid */}
-            <div className="lg:col-span-3"> 
-               <ProductsCard  />
-            </div>
+          {/* Filters */}
+          <FilterForm isDialog={false} />
+          {/* Product grid */}
+          <div className="lg:col-span-3">
+            <ProductsCard />
+          </div>
         </div>
-    </section>
-</main>
-  )
-}
+      </section>
+    </main>
+  );
+};
 
-export default MainList
+export default MainList;

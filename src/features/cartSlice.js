@@ -2,8 +2,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  items: [], 
-  totalPrice: 0 
+  items: [],
+  totalPrice: 0,
 };
 
 const cartSlice = createSlice({
@@ -13,8 +13,10 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const product = action.payload;
 
-      const existingProduct = state.items.find(item => item.id === product.id);
-      
+      const existingProduct = state.items.find(
+        (item) => item.id === product.id,
+      );
+
       if (existingProduct) {
         // Incrémenter la quantité du produit si déjà présent
         existingProduct.quantity += 1;
@@ -26,7 +28,7 @@ const cartSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       const product = action.payload;
-      state.items = state.items.filter(item => item.id !== product.id);
+      state.items = state.items.filter((item) => item.id !== product.id);
       state.totalPrice -= product.price;
     },
   },
